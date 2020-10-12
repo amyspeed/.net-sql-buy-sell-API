@@ -6,7 +6,7 @@ namespace buy_and_sell_dotNetAPI.Models
     public class Listing
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(45)]

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace buy_and_sell_dotNetAPI.Migrations
 {
@@ -10,7 +11,8 @@ namespace buy_and_sell_dotNetAPI.Migrations
                 name: "Listings",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 45, nullable: false),
                     Description = table.Column<string>(maxLength: 1000, nullable: true),
                     Price = table.Column<float>(nullable: false),

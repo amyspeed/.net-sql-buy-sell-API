@@ -20,17 +20,17 @@ namespace buy_and_sell_dotNetAPI.Data
         {
             var listings = new List<Listing>
             {
-                new Listing { Id = "223", Name = "Test Name2", Description="Test Desc" },
-                new Listing { Id = "224", Name = "Test Name3", Description="Test Desc" },
-                new Listing { Id = "225", Name = "Test Name4", Description="Test Desc" }
+                new Listing { Id = 223, Name = "Test Name2", Description="Test Desc" },
+                new Listing { Id = 224, Name = "Test Name3", Description="Test Desc" },
+                new Listing { Id = 225, Name = "Test Name4", Description="Test Desc" }
             };
 
             return listings;
         }
 
-        public Listing GetListingById(string Id)
+        public Listing GetListingById(int Id)
         {
-            return new Listing { Id = "222", Name = "Test Name" };
+            return new Listing { Id = 222, Name = "Test Name" };
         }
 
         public bool SaveChanges()

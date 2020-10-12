@@ -39,7 +39,7 @@ namespace buy_and_sell_dotNetAPI.Controllers
 
         //GET api/listings/{id}
         [HttpGet("{id}", Name="GetListingById")]
-        public ActionResult <ListingReadDto> GetListingById(string id)
+        public ActionResult <ListingReadDto> GetListingById(int id)
         {
             var listingItem = _repository.GetListingById(id);
             if (listingItem != null)
@@ -66,7 +66,7 @@ namespace buy_and_sell_dotNetAPI.Controllers
         //PUT api/listings/{id}
         //This requires the entire data object
         [HttpPut("{id}")]
-        public ActionResult UpdateListing(string id, ListingUpdateDto listingUpdateDto)
+        public ActionResult UpdateListing(int id, ListingUpdateDto listingUpdateDto)
         {
             var listingModelFromRepo = _repository.GetListingById(id);
             if(listingModelFromRepo == null)
@@ -87,7 +87,7 @@ namespace buy_and_sell_dotNetAPI.Controllers
         //PATCH api/listings/{id}
         //This is a partial data update
         [HttpPatch("{id}")]
-        public ActionResult PartialListingUpdate(string id, JsonPatchDocument<ListingUpdateDto> patchDoc)
+        public ActionResult PartialListingUpdate(int id, JsonPatchDocument<ListingUpdateDto> patchDoc)
         {
             var listingModelFromRepo = _repository.GetListingById(id);
             if(listingModelFromRepo == null)
@@ -113,7 +113,7 @@ namespace buy_and_sell_dotNetAPI.Controllers
 
         //DELETE api/listings/{id}
         [HttpDelete("{id}")]
-        public ActionResult DeleteListing(string id)
+        public ActionResult DeleteListing(int id)
         {
             var listingModelFromRepo = _repository.GetListingById(id);
             if (listingModelFromRepo == null)

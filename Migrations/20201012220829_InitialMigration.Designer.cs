@@ -8,7 +8,7 @@ using buy_and_sell_dotNetAPI.Data;
 namespace buy_and_sell_dotNetAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20201012145633_InitialMigration")]
+    [Migration("20201012220829_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,8 +20,9 @@ namespace buy_and_sell_dotNetAPI.Migrations
 
             modelBuilder.Entity("buy_and_sell_dotNetAPI.Models.Listing", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("varchar(1000)")

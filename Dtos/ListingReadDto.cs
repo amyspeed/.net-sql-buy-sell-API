@@ -3,7 +3,7 @@ namespace buy_and_sell_dotNetAPI.Dtos
 {
     public class ListingReadDto
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

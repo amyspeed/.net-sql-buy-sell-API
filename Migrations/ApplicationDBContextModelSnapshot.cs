@@ -18,8 +18,9 @@ namespace buy_and_sell_dotNetAPI.Migrations
 
             modelBuilder.Entity("buy_and_sell_dotNetAPI.Models.Listing", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("varchar(1000)")

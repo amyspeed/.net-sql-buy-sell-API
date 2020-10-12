@@ -19,7 +19,7 @@ namespace buy_and_sell_dotNetAPI.Data
             return _context.Listings.ToList();
         }
 
-        public Listing GetListingById(string id)
+        public Listing GetListingById(int id)
         {
             return _context.Listings.FirstOrDefault(p => p.Id == id);
         }
