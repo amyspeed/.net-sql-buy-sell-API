@@ -33,6 +33,11 @@ namespace buy_and_sell_dotNetAPI.Data
             return new Listing { Id = 222, Name = "Test Name" };
         }
 
+        public IEnumerable<Listing> GetListingsByUserId(string userID)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool SaveChanges()
         {
             throw new NotImplementedException();

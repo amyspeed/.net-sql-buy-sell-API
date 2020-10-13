@@ -10,6 +10,8 @@ namespace buy_and_sell_dotNetAPI.Data
 
         IEnumerable<Listing> GetAllListings();
 
+        IEnumerable<Listing> GetListingsByUserId(string userID);
+
         Listing GetListingById(int Id);
 
         void CreateListing(Listing lst);

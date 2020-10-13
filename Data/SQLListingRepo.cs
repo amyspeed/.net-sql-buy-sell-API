@@ -24,6 +24,11 @@ namespace buy_and_sell_dotNetAPI.Data
             return _context.Listings.FirstOrDefault(p => p.Id == id);
         }
 
+        public IEnumerable<Listing> GetListingsByUserId(string userId)
+        {
+            return _context.Listings.Where(p => p.UserId == userId);
+        }
+
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);

@@ -38,8 +38,8 @@ namespace buy_and_sell_dotNetAPI.Controllers
 
 
         //GET api/listings/{id}
-        [HttpGet("{id}", Name="GetListingById")]
-        public ActionResult <ListingReadDto> GetListingById(int id)
+        [HttpGet("{id}", Name = "GetListingById")]
+        public ActionResult<ListingReadDto> GetListingById(int id)
         {
             var listingItem = _repository.GetListingById(id);
             if (listingItem != null)
@@ -49,9 +49,19 @@ namespace buy_and_sell_dotNetAPI.Controllers
             return NotFound();
         }
 
+        //GET api/listings/user/{userId}
+        [HttpGet("user/{userId}")]
+        public ActionResult<IEnumerable<ListingReadDto>> GetListingsByUserId(string userId)
+        {
+            var listingItems = _repository.GetListingsByUserId(userId);
+
+            return Ok(_mapper.Map<IEnumerable<ListingReadDto>>(listingItems));
+
+        }
+
         //POST api/listings
         [HttpPost]
-        public ActionResult <ListingReadDto> CreateListing(ListingCreateDto listingCreateDto)
+        public ActionResult<ListingReadDto> CreateListing(ListingCreateDto listingCreateDto)
         {
             var listingModel = _mapper.Map<Listing>(listingCreateDto);
             _repository.CreateListing(listingModel);
@@ -59,7 +69,7 @@ namespace buy_and_sell_dotNetAPI.Controllers
 
             var listingReadDto = _mapper.Map<ListingReadDto>(listingModel);
 
-            return CreatedAtRoute(nameof(GetListingById), new {Id = listingReadDto.Id}, listingReadDto);
+            return CreatedAtRoute(nameof(GetListingById), new { Id = listingReadDto.Id }, listingReadDto);
 
         }
 
@@ -69,7 +79,7 @@ namespace buy_and_sell_dotNetAPI.Controllers
         public ActionResult UpdateListing(int id, ListingUpdateDto listingUpdateDto)
         {
             var listingModelFromRepo = _repository.GetListingById(id);
-            if(listingModelFromRepo == null)
+            if (listingModelFromRepo == null)
             {
                 return NotFound();
             }
@@ -82,7 +92,7 @@ namespace buy_and_sell_dotNetAPI.Controllers
 
             return NoContent();
         }
-        
+
 
         //PATCH api/listings/{id}
         //This is a partial data update
@@ -90,7 +100,7 @@ namespace buy_and_sell_dotNetAPI.Controllers
         public ActionResult PartialListingUpdate(int id, JsonPatchDocument<ListingUpdateDto> patchDoc)
         {
             var listingModelFromRepo = _repository.GetListingById(id);
-            if(listingModelFromRepo == null)
+            if (listingModelFromRepo == null)
             {
                 return NotFound();
             }
